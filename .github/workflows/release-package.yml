@@ -1,0 +1,53 @@
+name: Release Microsoft.Graph.Batching
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+    paths:
+      - .github/workflows/release-package.yml
+      - src/Microsoft.Graph.Batching/**/*.cs
+      - src/Microsoft.Graph.Batching/*.csproj
+
+jobs:
+  build-and-push:
+
+    env:
+      BUILD_CONFIG: 'Release'
+      SOLUTION: 'Microsoft.Graph.Batching.sln'
+      PROJECT: 'src/Microsoft.Graph.Batching/Microsoft.Graph.Batching.csproj'
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.x
+
+    - name: Install GitVersion
+      uses: gittools/actions/gitversion/setup@v0.9.15
+      with:
+        versionSpec: '5.x'
+    
+    - name: Determine Version
+      uses: gittools/actions/gitversion/execute@v0.9.15
+      with:
+        useConfigFile: true
+        additionalArguments: /updateprojectfiles
+
+    - name: Restore dependencies
+      run: dotnet restore $SOLUTION
+
+    - name: Build solution
+      run: dotnet build $SOLUTION --configuration $BUILD_CONFIG --no-restore
+    
+    - name: Create nuget package
+      run: dotnet pack $PROJECT -c $BUILD_CONFIG --no-build --no-restore --output .
+
+    - name: Push KeyVault proxy to NuGet
+      run: dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_API_KEY}} --skip-duplicate

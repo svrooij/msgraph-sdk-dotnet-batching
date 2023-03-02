@@ -6,9 +6,9 @@
 [![github stars][badge_repo_stars]][link_repo]
 [![github sponsor][badge_sponsor]][link_sponsor]
 
-The Microsoft Graph Client [has](https://learn.microsoft.com/en-us/graph/sdks/batch-requests?tabs=csharp) support for Batching, which is a great idea when you are doing a lot of requests to the Graph API. By batching request you can achieve much higher speeds.
+The Microsoft Graph Client [has](https://learn.microsoft.com/en-us/graph/sdks/batch-requests?tabs=csharp) support for Batching, which is a great idea when you are doing a lot of requests to the Graph API. By batching requests you can achieve much higher throughput.
 
-The original batch implementation in the GraphServiceClient is lacking some features, that I would qualify as required. By default the GraphServiceClient let's you combine up to 20 requests before throwing an exception.
+The original batch implementation in the GraphServiceClient feels incomplete, by default the GraphServiceClient let's you combine up to 20 requests before throwing an exception.
 
 By using this [extension](#introducing-the-batchrequestcontentcollection) you can combine "unlimited" requests and have this library automatically split up the requests in multiple batches. While staying very close to the original implementation.
 
@@ -63,12 +63,22 @@ var user = await response.GetResponseByIdAsync<User>(getRequest1);
 ...
 ```
 
-## Socials
+## Things to keep in mind
+
+- You **cannot** combine requests to multiple tenants in a single batch.
+- You **cannot** combine requests to `beta` and `v1` endpoints.
+- You should test wether or not batching results in higher speeds.
+
+Regular batching support request dependencies, because you don't know if the requests are put in the same batch, you should be careful depending on those.
+
+## About the author
 
 [![LinkedIn Profile][badge_linkedin]][link_linkedin]
 [![Link Mastodon][badge_mastodon]][link_mastodon]
 [![Follow on Twitter][badge_twitter]][link_twitter]
 [![Check my blog][badge_blog]][link_blog]
+
+I like building applications and am somewhat of a Microsoft Graph API expert. I used this knowledge to build this batching helper. But I'm only human so please validate, and if you find an [issue][link_issues] please let me know. If you like this extension give me a shout out on [twitter @svrooij][link_twitter].
 
 [badge_hackathon]: https://img.shields.io/badge/Microsoft%20365-Hackathon-orange?style=for-the-badge&logo=microsoft
 [link_hackathon]: https://github.com/microsoft/hack-together

@@ -14,8 +14,8 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/svrooij/msgraph-sdk-dotnet-batching.git</RepositoryUrl>
-    <PackageId>SvR.Graph.Batching</PackageId>
-    <Title>Microsoft.Graph.Batching</Title>
+    <PackageId>SvRooij.Graph.Batching</PackageId>
+    <Title>Microsoft.Graph batching by svrooij</Title>
     <PackageTags>Microsoft Graph SDK;Batching</PackageTags>
   </PropertyGroup>
 
