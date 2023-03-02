@@ -1,9 +1,10 @@
-# Microsoft.Graph.Batching
+# SvRooij.Graph.Batching
 
-[![Language][badge_language]][link_repo]
-[![License][badge_license]][link_repo]
+[![nuget][badge_nuget]][link_nuget]
 [![github issues][badge_issues]][link_issues]
 [![github stars][badge_repo_stars]][link_repo]
+[![Language][badge_language]][link_repo]
+[![License][badge_license]][link_repo]
 [![github sponsor][badge_sponsor]][link_sponsor]
 
 The Microsoft Graph Client [has](https://learn.microsoft.com/en-us/graph/sdks/batch-requests?tabs=csharp) support for Batching, which is a great idea when you are doing a lot of requests to the Graph API. By batching requests you can achieve much higher throughput.
@@ -78,7 +79,7 @@ Regular batching support request dependencies, because you don't know if the req
 [![Follow on Twitter][badge_twitter]][link_twitter]
 [![Check my blog][badge_blog]][link_blog]
 
-I like building applications and am somewhat of a Microsoft Graph API expert. I used this knowledge to build this batching helper. But I'm only human so please validate, and if you find an [issue][link_issues] please let me know. If you like this extension give me a shout out on [twitter @svrooij][link_twitter].
+I like building applications and am somewhat of a Microsoft Graph API expert. I used this knowledge to build this batching helper. But I'm only human so please validate, and if you find an [issue][link_issues] please let me know. If you like this extension give me a shout out on [twitter @svrooij][link_twitter]. You can also [follow my blog][link_blog] if you're interested in these sort of projects
 
 [badge_hackathon]: https://img.shields.io/badge/Microsoft%20365-Hackathon-orange?style=for-the-badge&logo=microsoft
 [link_hackathon]: https://github.com/microsoft/hack-together
@@ -92,11 +93,13 @@ I like building applications and am somewhat of a Microsoft Graph API expert. I 
 [link_mastodon]: https://dotnet.social/@svrooij
 [link_twitter]: https://twitter.com/svrooij
 
+[badge_nuget]: https://img.shields.io/nuget/v/SvRooij.Graph.Batching?logo=nuget&style=for-the-badge
 [badge_language]: https://img.shields.io/badge/language-C%23-blue?style=for-the-badge
 [badge_license]: https://img.shields.io/github/license/svrooij/msgraph-sdk-dotnet-batching?style=for-the-badge
 [badge_issues]: https://img.shields.io/github/issues/svrooij/msgraph-sdk-dotnet-batching?style=for-the-badge
 [badge_repo_stars]: https://img.shields.io/github/stars/svrooij/msgraph-sdk-dotnet-batching?logo=github&style=for-the-badge
 [badge_sponsor]: https://img.shields.io/github/sponsors/svrooij?logo=github&style=for-the-badge
 [link_issues]: https://github.com/svrooij/msgraph-sdk-dotnet-batching/issues
+[link_nuget]: https://www.nuget.org/packages/SvRooij.Graph.Batching/
 [link_repo]: https://github.com/svrooij/msgraph-sdk-dotnet-batching
 [link_sponsor]: https://github.com/sponsors/svrooij

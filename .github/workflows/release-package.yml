@@ -12,6 +12,7 @@ on:
 
 jobs:
   build-and-push:
+    name: Build and release
 
     env:
       BUILD_CONFIG: 'Release'
@@ -49,5 +50,5 @@ jobs:
     - name: Create nuget package
       run: dotnet pack $PROJECT -c $BUILD_CONFIG --no-build --no-restore --output .
 
-    - name: Push KeyVault proxy to NuGet
+    - name: Push to NuGet
       run: dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_API_KEY}} --skip-duplicate

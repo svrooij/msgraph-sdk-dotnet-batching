@@ -1,0 +1,30 @@
+name: Check SvRooij.Graph.Batching
+
+on:
+  pull_request:
+    types:
+      - opened
+    branches:
+      - 'main'
+
+jobs:
+  build:
+    name: Build solution
+    env:
+      BUILD_CONFIG: 'Release'
+      SOLUTION: 'Microsoft.Graph.Batching.sln'
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.x
+
+    - name: Restore dependencies
+      run: dotnet restore $SOLUTION
+
+    - name: Build solution
+      run: dotnet build $SOLUTION --configuration $BUILD_CONFIG --no-restore
