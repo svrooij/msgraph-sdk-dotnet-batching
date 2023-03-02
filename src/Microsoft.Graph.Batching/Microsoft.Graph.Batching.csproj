@@ -5,28 +5,37 @@
 	  <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	  <LangVersion>8.0</LangVersion>
+    <Authors>Stephan van Rooij</Authors>
+    <Description>Microsoft.Graph.Batch extension automatically splitting the requests over multiple batches if required</Description>
+    <Copyright>2023</Copyright>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/svrooij/msgraph-sdk-dotnet-batching</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/svrooij/msgraph-sdk-dotnet-batching.git</RepositoryUrl>
+    <PackageId>SvR.Graph.Batching</PackageId>
+    <Title>Microsoft.Graph.Batching</Title>
+    <PackageTags>Microsoft Graph SDK;Batching</PackageTags>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
     <WarningLevel>6</WarningLevel>
-    <NoWarn>1701;1702;CS8625</NoWarn>
+    <NoWarn>1701;1702;CS8625;CS8604</NoWarn>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <WarningLevel>6</WarningLevel>
-    <NoWarn>1701;1702;CS8625</NoWarn>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0|AnyCPU'">
-    <NoWarn>1701;1702;CS8625</NoWarn>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0|AnyCPU'">
-    <NoWarn>1701;1702;CS8625</NoWarn>
+    <NoWarn>1701;1702;CS8625;CS8604</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Graph" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\README.md" />
+    <None Include="..\..\LICENSE.txt" Pack="true" PackagePath="\LICENSE.txt" />
   </ItemGroup>
 
 </Project>

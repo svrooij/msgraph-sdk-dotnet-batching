@@ -9,11 +9,14 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Graph.Batching
 {
+    /// <summary>
+    /// Handles batch request responses.
+    /// </summary>
     public class BatchResponseContentCollection
     {
         private readonly List<BatchResponseContentObject> batchResponses;
 
-        public BatchResponseContentCollection()
+        internal BatchResponseContentCollection()
         {
             batchResponses = new List<BatchResponseContentObject>();
         }
@@ -74,6 +77,7 @@ namespace Microsoft.Graph.Batching
         /// All <see cref="HttpResponseMessage"/> in the dictionary MUST be disposed since they implement <see cref="IDisposable"/>.
         /// </summary>
         /// <returns>A Dictionary of id and <see cref="HttpResponseMessage"/> representing batch responses.</returns>
+        /// <remarks>Not implemented, need help</remarks>
         public Task<Dictionary<string, HttpResponseMessage>> GetResponsesAsync()
         {
             throw new NotImplementedException("GetResponsesAsync() is not available in the BatchCollection");

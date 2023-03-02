@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Graph.Batching
 {
+    /// <summary>
+    /// A collection of batch requests that are automatically managed.
+    /// </summary>
     public class BatchRequestContentCollection
     {
         private readonly IBaseClient baseClient;
@@ -13,6 +16,10 @@ namespace Microsoft.Graph.Batching
         private BatchRequestContent currentRequest;
         private bool readOnly = false;
 
+        /// <summary>
+        /// Constructs a new <see cref="BatchRequestContentCollection"/>.
+        /// </summary>
+        /// <param name="baseClient">The <see cref="IBaseClient"/> for making requests</param>
         public BatchRequestContentCollection(IBaseClient baseClient)
         {
             this.baseClient = baseClient;

@@ -6,10 +6,10 @@ using Microsoft.Graph.Models;
 var scopes = new[] { "User.Read" };
 
 // Multi-tenant apps can use "common",
-// single-tenant apps must use the tenant ID from the Azure portal
+// single-tenant apps must use the tenant ID from the Azure portal (replace with your own)
 var tenantId = "df68aa03-48eb-4b09-9f3e-8aecc58e207c";
 
-// Value from app registration
+// Value from app registration (replace with your own)
 var clientId = "d3b14c33-10e5-469d-9300-8a6886e5ed04";
 
 // using Azure.Identity;
@@ -26,7 +26,7 @@ var interactiveCredential = new InteractiveBrowserCredential(new InteractiveBrow
 
 var graphClient = new GraphServiceClient(interactiveCredential, scopes);
 
-// Without batch collection
+// Using a regular batch
 var batchRequestContent = new BatchRequestContent(graphClient);
 
 var getRequest1 = await batchRequestContent.AddBatchRequestStepAsync(graphClient.Me.ToGetRequestInformation());
