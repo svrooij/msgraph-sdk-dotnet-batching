@@ -17,6 +17,10 @@ By using this [extension](#introducing-the-batchrequestcontentcollection) you ca
 
 This project was starting during the [Hack Together: Microsoft Graph and .NET][link_hackathon]
 
+## Superseded by Microsoft.Graph.Core 3.0.1  
+
+After the release of this extension to the Graph SDK, it got a lot of attention, so I decided to create a PR for the SDK itself. Today, March 7th they released `Microsoft.Graph.Core` version 3.0.1 which included the code that was also in this extension. The extension will get one last update, to deprecate all code and refer to the official sdk. [More details](https://svrooij.io/2023/03/03/batching-in-microsoft-graph/)
+
 ## Batching with Microsoft Graph
 
 This library stays really close to the [build-in batch support](https://learn.microsoft.com/en-us/graph/sdks/batch-requests?tabs=csharp) so go ahead and read that documentation before hand.

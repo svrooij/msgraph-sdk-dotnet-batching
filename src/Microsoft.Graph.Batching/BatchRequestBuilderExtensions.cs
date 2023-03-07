@@ -1,4 +1,5 @@
 ﻿using Microsoft.Graph.Core.Requests;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -16,6 +17,7 @@ namespace Microsoft.Graph.Batching
         /// <param name="batchRequestContentCollection">The <see cref="BatchRequestContentCollection"/> for the request</param>
         /// <param name="cancellationToken"><see cref="CancellationToken"/> to use for cancelling requests</param>
         /// <returns></returns>
+        [Obsolete("Code is now part of Microsoft.Graph.Core, remove package SvRooij.Graph.Batching")]
         public static async Task<BatchResponseContentCollection> PostAsync(this BatchRequestBuilder builder, BatchRequestContentCollection batchRequestContentCollection, CancellationToken cancellationToken = default)
         {
             var collection = new BatchResponseContentCollection();

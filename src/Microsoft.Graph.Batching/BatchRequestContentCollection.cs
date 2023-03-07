@@ -9,6 +9,7 @@ namespace Microsoft.Graph.Batching
     /// <summary>
     /// A collection of batch requests that are automatically managed.
     /// </summary>
+    [Obsolete("Code is now part of Microsoft.Graph.Core, remove package SvRooij.Graph.Batching")]
     public class BatchRequestContentCollection
     {
         private readonly IBaseClient baseClient;
@@ -50,6 +51,7 @@ namespace Microsoft.Graph.Batching
         /// </summary>
         /// <param name="httpRequestMessage">A <see cref="HttpRequestMessage"/> to use to build a <see cref="BatchRequestStep"/> to add.</param>
         /// <returns>The requestId of the newly created <see cref="BatchRequestStep"/></returns>
+        [Obsolete("Code is now part of Microsoft.Graph.Core, remove package SvRooij.Graph.Batching")]
         public string AddBatchRequestStep(HttpRequestMessage httpRequestMessage)
         {
             SetupCurrentRequest();
@@ -61,6 +63,7 @@ namespace Microsoft.Graph.Batching
         /// </summary>
         /// <param name="requestInformation">A <see cref="RequestInformation"/> to use to build a <see cref="BatchRequestStep"/> to add.</param>
         /// <returns>The requestId of the  newly created <see cref="BatchRequestStep"/></returns>
+        [Obsolete("Code is now part of Microsoft.Graph.Core, remove package SvRooij.Graph.Batching")]
         public Task<string> AddBatchRequestStepAsync(RequestInformation requestInformation)
         {
             SetupCurrentRequest();
@@ -72,6 +75,7 @@ namespace Microsoft.Graph.Batching
         /// </summary>
         /// <param name="requestId">A unique batch request id to remove.</param>
         /// <returns>True or false based on removal or not removal of a <see cref="BatchRequestStep"/>.</returns>
+        [Obsolete("Code is now part of Microsoft.Graph.Core, remove package SvRooij.Graph.Batching")]
         public bool RemoveBatchRequestStepWithId(string requestId)
         {
             ValidateReadOnly();

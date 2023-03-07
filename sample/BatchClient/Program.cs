@@ -1,6 +1,5 @@
 ﻿using Azure.Identity;
 using Microsoft.Graph;
-using Microsoft.Graph.Batching;
 using Microsoft.Graph.Models;
 
 var scopes = new[] { "User.Read" };
