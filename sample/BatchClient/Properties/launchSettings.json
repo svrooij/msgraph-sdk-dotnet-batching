@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "BatchClient": {
+      "commandName": "Project",
+      "environmentVariables": {
+        //"ListID": "AAMkAGM4ZG...BDMAAA=",
+        "ClientID": "4cb89509-b479-480a-ad26-44c3a32a65e2"
+      },
+      "hotReloadEnabled": false
+    }
+  }
+}

@@ -2,13 +2,13 @@ name: Release Microsoft.Graph.Batching
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-    - main
-    paths:
-      - .github/workflows/release-package.yml
-      - src/Microsoft.Graph.Batching/**/*.cs
-      - src/Microsoft.Graph.Batching/*.csproj
+  # push:
+  #   branches:
+  #   - main
+  #   paths:
+  #     - .github/workflows/release-package.yml
+  #     - src/Microsoft.Graph.Batching/**/*.cs
+  #     - src/Microsoft.Graph.Batching/*.csproj
 
 jobs:
   build-and-push:
