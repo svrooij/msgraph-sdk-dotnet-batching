@@ -15,9 +15,13 @@ var clientId = Environment.GetEnvironmentVariable("ClientID") ?? "4cb89509-b479-
 
 // Change accordingly
 string? listId = Environment.GetEnvironmentVariable("ListID") ?? null; // Or set list ID if you know it.
-TestAction action = TestAction.AddTasksWithBatch;
-int numberOfTasksToCreate = 30;
 
+int numberOfTasksToCreate = 20;
+
+Console.ReadLine();
+GraphClientExtensions.WriteHeader();
+Console.WriteLine("Press enter to start login");
+Console.ReadLine();
 
 // ----------------------------------------------- Code from here -----------------------------------------------
 // https://learn.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential
@@ -36,6 +40,9 @@ var graphClient = new GraphServiceClient(interactiveCredential, scopes);
 // To force authentication early, request profile
 var profile = await graphClient.Me.GetAsync();
 
+Console.WriteLine("Welcome {0}, press enter to start adding {1} tasks", profile.DisplayName, numberOfTasksToCreate);
+Console.ReadLine();
+
 // Create a new list for testing, deleting will remove all items from the list if you're not carefull!
 if(string.IsNullOrEmpty(listId))
 {
@@ -49,66 +56,59 @@ if(string.IsNullOrEmpty(listId))
 }
 
 List<TodoTask> tasks = new List<TodoTask>();
-
-if (action == TestAction.AddTasks || action == TestAction.AddTasksWithBatch)
+for (int i = 1; i < numberOfTasksToCreate + 1; i++)
 {
-    for (int i = 1; i < numberOfTasksToCreate + 1; i++)
+    tasks.Add(new TodoTask
     {
-        tasks.Add(new TodoTask
-        {
-            Title = $"Test task {i}",
-            Categories = new List<string> {"Important"}
-        });
-    }
-} else
-{
-    Console.WriteLine("Loading tasks");
-    tasks = await graphClient.GetAllTasksFromList(listId);
+        Title = $"Test task {i}",
+    });
 }
 
 var stopwatch = new Stopwatch();
-switch (action)
-{
-    case TestAction.AddTasks:
-        Console.WriteLine("Start adding {0} tasks", tasks.Count);
-        stopwatch.Start();
-        await graphClient.AddTodoTasksToList(listId, tasks);
-
-        break;
-
-
-    case TestAction.AddTasksWithBatch:
-        Console.WriteLine("Start adding {0} tasks with batch", tasks.Count);
-
-        stopwatch.Start();
-        await graphClient.AddTodoTasksToListWithBatch(listId, tasks);
-        break;
-
-
-    case TestAction.RemoveTasks:
-        Console.WriteLine("Start removing {0} tasks", tasks.Count);
-        stopwatch.Start();
-        await graphClient.RemoveTasksFromList(listId, tasks);
-        break;
-
-
-
-    case TestAction.RemoveTasksWithBatch:
-        Console.WriteLine("Start removing {0} tasks with batch", tasks.Count);
-        stopwatch.Start();
-        await graphClient.RemoveTasksFromListWithBatch(listId, tasks);
-
-        break;
-}
-
+stopwatch.Start();
+await graphClient.AddTodoTasksToList(listId, tasks);
 stopwatch.Stop();
 
-Console.WriteLine("{0} completed in {1}ms", action, stopwatch.ElapsedMilliseconds);
+Console.WriteLine("{0} completed in {1}ms", "AddTodoTasksToList", stopwatch.ElapsedMilliseconds);
+Console.WriteLine("Press enter to continue");
+Console.ReadLine();
+
+tasks = await graphClient.GetAllTasksFromList(listId);
+stopwatch.Restart();
+await graphClient.RemoveTasksFromList(listId, tasks);
+stopwatch.Stop();
+
+Console.WriteLine("{0} completed in {1}ms", "RemoveTasksFromList", stopwatch.ElapsedMilliseconds);
+Console.WriteLine("Press enter to continue");
+Console.ReadLine();
+tasks.Clear();
+for (int i = 1; i < numberOfTasksToCreate + 1; i++)
+{
+    tasks.Add(new TodoTask
+    {
+        Title = $"Test task {i}",
+    });
+}
+stopwatch.Restart();
+await graphClient.AddTodoTasksToListWithBatch(listId, tasks);
+stopwatch.Stop();
+
+Console.WriteLine("{0} completed in {1}ms", "AddTodoTasksToListWithBatch", stopwatch.ElapsedMilliseconds);
+Console.WriteLine("Press enter to continue");
+Console.ReadLine();
+
+tasks = await graphClient.GetAllTasksFromList(listId);
+stopwatch.Restart();
+await graphClient.RemoveTasksFromListWithBatch(listId, tasks);
+stopwatch.Stop();
+
+Console.WriteLine("{0} completed in {1}ms", "RemoveTasksFromListWithBatch", stopwatch.ElapsedMilliseconds);
+Console.WriteLine("Press enter to continue");
 Console.ReadLine();
 
 
-
-
+Console.WriteLine("Tranks for watching, be sure to leave a star on this sample repository!");
+Console.ReadLine();
 
 
 //// Using a regular batch

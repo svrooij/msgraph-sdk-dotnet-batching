@@ -3,8 +3,8 @@
     "BatchClient": {
       "commandName": "Project",
       "environmentVariables": {
-        //"ListID": "AAMkAGM4ZG...BDMAAA=",
-        "ClientID": "4cb89509-b479-480a-ad26-44c3a32a65e2"
+        "ListID": "AAMkAGM4ZGVlOTViLTU0YjEtNDNhZC1iZWRiLWEzMDU4YTI4NTIxMQAuAAAAAABW7ys5MgSwTb0t8taYlAxmAQAGPlmrmzHqS6uWvBmmvyBRAAAQ57I3AAA=",
+        "ClientID": "d3b14c33-10e5-469d-9300-8a6886e5ed04"
       },
       "hotReloadEnabled": false
     }

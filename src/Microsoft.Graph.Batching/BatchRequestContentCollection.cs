@@ -14,6 +14,7 @@ namespace Microsoft.Graph.Batching
     {
         private readonly IBaseClient baseClient;
         private readonly List<BatchRequestContent> batchRequests;
+        private readonly int splitAfterRequests;
         private BatchRequestContent currentRequest;
         private bool readOnly = false;
 
@@ -21,9 +22,11 @@ namespace Microsoft.Graph.Batching
         /// Constructs a new <see cref="BatchRequestContentCollection"/>.
         /// </summary>
         /// <param name="baseClient">The <see cref="IBaseClient"/> for making requests</param>
-        public BatchRequestContentCollection(IBaseClient baseClient)
+        /// <param name="splitAfterRequests"></param>
+        public BatchRequestContentCollection(IBaseClient baseClient, int splitAfterRequests = CoreConstants.BatchRequest.MaxNumberOfRequests)
         {
             this.baseClient = baseClient;
+            this.splitAfterRequests = splitAfterRequests;
             batchRequests = new List<BatchRequestContent>();
             currentRequest = new BatchRequestContent(baseClient);
         }
@@ -39,7 +42,7 @@ namespace Microsoft.Graph.Batching
         private void SetupCurrentRequest()
         {
             ValidateReadOnly();
-            if (currentRequest.BatchRequestSteps.Count >= CoreConstants.BatchRequest.MaxNumberOfRequests)
+            if (currentRequest.BatchRequestSteps.Count >= splitAfterRequests)
             {
                 batchRequests.Add(currentRequest);
                 currentRequest = new BatchRequestContent(baseClient);
